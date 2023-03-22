@@ -5,12 +5,15 @@
 			<input v-model="article.author" placeholder="Автор" type="text">
 			<textarea v-model="article.body" placeholder="Текст" type="text"></textarea>
 			<label><input v-model="article.published" type="checkbox" name="" id="">Published</label>
-			<input v-on:click.prevent="$emit('add-article', article)" type="submit" value="Добавить">
+			<!-- <input v-on:click.prevent="$emit('add-article', article)" type="submit" value="Добавить"> -->
+			<input v-on:click.prevent="addArticle(article)" type="submit" value="Добавить">
 		</form>
 	</div>
 </template>
 
 <script>
+import store from '../store/index.js';
+
 export default {
 	name: 'ArticleForm',
 	data() {
@@ -21,6 +24,12 @@ export default {
 				body: '',
 				published: ''
 			}
+		}
+	},
+	methods: {
+		addArticle(article) {
+			store.addArticle(article);
+			this.$router.push('/');
 		}
 	}
 }

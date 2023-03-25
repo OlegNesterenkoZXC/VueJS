@@ -12,7 +12,7 @@
 
 <script>
 import { RouterLink } from 'vue-router';
-import store from '../store/index.js';
+import store from '../store';
 
 export default {
 	name: "My-Article",
@@ -30,7 +30,9 @@ export default {
 	},
 	methods: {
 		switchPublished() {
-			store.switchPublished(this.id)
+			store.dispatch('switchPublished', {
+				id: this.id
+			})
 		}
 	},
 	computed: {

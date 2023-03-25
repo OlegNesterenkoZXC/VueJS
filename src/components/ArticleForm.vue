@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import store from '../store/index.js';
+import store from '../store';
 
 export default {
 	name: 'ArticleForm',
@@ -28,7 +28,9 @@ export default {
 	},
 	methods: {
 		addArticle(article) {
-			store.addArticle(article);
+			store.dispatch('addArticle', {
+				article: article
+			})
 			this.$router.push('/');
 		}
 	}

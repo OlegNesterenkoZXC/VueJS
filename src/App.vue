@@ -11,6 +11,10 @@
 			</p>
 			<button @click="fetchArticles">Загрузить</button>
 		</div>
+		<div v-show="isLoading">
+			<img src="loading.gif" alt="">
+			<button @click="cancelLoading">Отменить</button>
+		</div>
 		<router-view />
 	</div>
 </template>
@@ -18,6 +22,7 @@
 <script>
 import { mapState } from 'vuex';
 import store from './store';
+import { Types } from './store/types';
 
 export default {
 	name: 'App',
@@ -25,13 +30,17 @@ export default {
 	},
 	methods: {
 		fetchArticles() {
-			store.dispatch('fetchArticles', {
-				path: '/articles.json',
+			store.dispatch(Types.actions.ARTICLES_LOAD, {
+				path: 'http://localhost:10000/articles.json',
 			});
+		},
+		cancelLoading() {
+			store.dispatch(Types.actions.ARTICLES_LOAD_CANCEL);
 		}
 	},
 	computed: mapState({
-		loadError: state => state.moduleFetch.loadError
+		loadError: state => state.moduleFetch.loadError,
+		isLoading: state => state.moduleFetch.isLoading
 	})
 }
 </script>

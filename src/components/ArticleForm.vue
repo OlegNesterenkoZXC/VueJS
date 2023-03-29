@@ -13,6 +13,7 @@
 
 <script>
 import store from '../store';
+import { Types } from '@/store/types';
 
 export default {
 	name: 'ArticleForm',
@@ -28,12 +29,17 @@ export default {
 	},
 	methods: {
 		addArticle(article) {
-			store.dispatch('addArticle', {
-				article: article
-			})
+			const newArticle = {
+				id: store.state.moduleArticles.articles.length + 1,
+				published: false,
+				...article
+			}
+			console.log(newArticle.title)
+			store.commit(Types.mutations.ARTICLE_ADD_REQUESTED, [newArticle])
+
 			this.$router.push('/');
-		}
-	}
+		},
+	},
 }
 </script>
 

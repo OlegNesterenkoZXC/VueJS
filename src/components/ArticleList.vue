@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<!-- <ArticleForm v-on:add-article="addArticle($event)" /> -->
-		<div v-if="length">
+		<div v-if="articles">
 			<MyArticle v-for="article in articles" :key="article.id" :author="article.author" :body="article.body"
 				:title="article.title" :published="article.published" :id="article.id" />
 		</div>
@@ -20,7 +20,6 @@ export default {
 	},
 	computed: mapState({
 		articles: state => state.moduleArticles.articles,
-		length: state => state.moduleArticles.articles,
 	})
 }
 </script>

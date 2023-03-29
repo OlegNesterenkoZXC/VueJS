@@ -5,17 +5,20 @@
 			<router-link to="/about">About</router-link> |
 			<router-link to="/form">Add new article</router-link>
 		</nav>
-		<div class="error-button" v-show="loadError">
-			<p>
+		<div class="error-button" v-show="isFailed">
+			<p v-show="isCanceled">
+				Загрузка отменена!
+			</p>
+			<p v-show="!isCanceled">
 				Загрузка не удалась...
 			</p>
 			<button @click="fetchArticles">Загрузить</button>
 		</div>
-		<div v-show="isLoading">
-			<img src="loading.gif" alt="">
+		<div v-show="isRequested">
+			<img src="loading.gif" alt="Loading...">
 			<button @click="cancelLoading">Отменить</button>
 		</div>
-		<router-view />
+		<router-view v-show="isSucceeded" />
 	</div>
 </template>
 
@@ -39,8 +42,10 @@ export default {
 		}
 	},
 	computed: mapState({
-		loadError: state => state.moduleFetch.loadError,
-		isLoading: state => state.moduleFetch.isLoading
+		isRequested: state => state.moduleFetch.isRequested,
+		isSucceeded: state => state.moduleFetch.isSucceeded,
+		isFailed: state => state.moduleFetch.isFailed,
+		isCanceled: state => state.moduleFetch.isCanceled,
 	})
 }
 </script>

@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { Types } from '@/store/types';
 import { RouterLink } from 'vue-router';
 import store from '../store';
 
@@ -30,9 +31,7 @@ export default {
 	},
 	methods: {
 		switchPublished() {
-			store.dispatch('switchPublished', {
-				id: this.id
-			})
+			store.commit(Types.mutations.ARTICLE_SWITCH_STATUS, this.id)
 		}
 	},
 	computed: {

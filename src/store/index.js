@@ -12,28 +12,14 @@ const moduleArticles = {
 		fetchArticles(state, articles) {
 			state.articles = articles;
 		},
-		addArticle(state, article) {
-			state.articles.push(article);
+		pushArticles(state, articles) {
+			state.articles = [...state.articles, ...articles]
 		},
-		switchPublished(state, id) {
+		switchStatus(state, id) {
 			const article = state.articles.find(element => element.id == id);
 			article.published = !article.published
 		},
 	},
-	actions: {
-		addArticle(context, payload) {
-			const newArticle = {
-				id: context.state.articles.length + 1,
-				published: false,
-				...payload.article
-			}
-			console.log(newArticle.title);
-			context.commit('addArticle', newArticle);
-		},
-		switchPublished(context, payload) {
-			context.commit('switchPublished', payload.id)
-		}
-	}
 }
 
 export default new Vuex.Store({

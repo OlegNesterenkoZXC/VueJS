@@ -58,6 +58,17 @@
 			</div>
 			<router-view v-show="isSucceeded" />
 		</v-main>
+		<v-footer padless absolute>
+			<v-card tile class="blue" width="100%">
+				<v-row class="ma-0">
+					<v-col cols="12">
+						<v-card-text class="white--text text-center pa-1">
+							{{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+						</v-card-text>
+					</v-col>
+				</v-row>
+			</v-card>
+		</v-footer>
 	</v-app>
 </template>
 

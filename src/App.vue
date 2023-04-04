@@ -1,5 +1,5 @@
 <template>
-	<div id="app">
+	<v-app id="app">
 		<nav>
 			<router-link to="/">Home</router-link> |
 			<router-link to="/about">About</router-link> |
@@ -19,7 +19,7 @@
 			<button @click="cancelLoading">Отменить</button>
 		</div>
 		<router-view v-show="isSucceeded" />
-	</div>
+	</v-app>
 </template>
 
 <script>

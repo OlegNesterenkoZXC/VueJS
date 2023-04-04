@@ -5,6 +5,7 @@ import router from './router';
 import store from './store';
 import axios from 'axios';
 import { Types } from './store/types';
+import vuetify from '@/plugins/vuetify'
 
 Vue.config.productionTip = false;
 
@@ -16,7 +17,7 @@ Vue.use(VueAxios, axios);
 
 new Vue({
 	router,
-	//data: store.state,
 	store,
+	vuetify,
 	render: h => h(App)
 }).$mount('#app')

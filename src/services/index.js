@@ -58,7 +58,7 @@ export default {
 					signal: context.state.fetchController.signal
 				})
 				.then(response => {
-					context.commit(Types.mutations.ARTICLE_ADD_REQUESTED, response.data.articles);
+					context.commit(Types.mutations.ARTICLE_ADD_REQUESTED, response.data);
 					context.commit(Types.mutations.ARTICLES_SUCCEEDED)
 				})
 				.catch((reason) => {

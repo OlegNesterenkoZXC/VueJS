@@ -9,7 +9,7 @@ import { Types } from './store/types';
 Vue.config.productionTip = false;
 
 store.dispatch(Types.actions.ARTICLES_LOAD, {
-	path: 'http://localhost:10000/articles.json',
+	path: 'http://localhost:10000/articles',
 });
 
 Vue.use(VueAxios, axios);

@@ -1,11 +1,11 @@
 <template>
 	<div>
 		<!-- <ArticleForm v-on:add-article="addArticle($event)" /> -->
-		<div v-if="articles">
+		<v-container>
 			<MyArticle v-for="article in articles" :key="article.id" :author="article.author" :body="article.body"
-				:title="article.title" :published="article.published" :id="article.id" />
-		</div>
-
+				:title="article.title" :published="article.published" :id="article.id" :image="article.image"
+				class="mb-5" />
+		</v-container>
 	</div>
 </template>
 

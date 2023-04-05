@@ -42,7 +42,7 @@
 			<v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 			<v-app-bar-title>VueJS</v-app-bar-title>
 		</v-app-bar>
-		<v-main>
+		<v-main class="mb-6">
 			<div class="error-button" v-show="isFailed">
 				<p v-show="isCanceled">
 					Загрузка отменена!

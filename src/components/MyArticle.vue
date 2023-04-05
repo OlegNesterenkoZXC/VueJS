@@ -1,13 +1,21 @@
 <template>
-	<div class="article" :class="{ notPublished: !published }">
-		<p>
-			<router-link :to="articleUrl">{{ title }}</router-link>
-		</p>
-		<p :style="{ fontStyle: fStyle }">{{ upperAuthor }}</p>
-		<p>{{ body }}</p>
-		<!-- <button @click.prevent="$emit('click')"> Переключить!</button> -->
-		<button @click.prevent="switchPublished()"> Переключить!</button>
-	</div>
+	<v-container>
+		<v-card :color="cardColor" elevation="5">
+			<v-img :src="image" position="center"></v-img>
+			<v-card-title>
+				<router-link :to="articleUrl">{{ title }}</router-link>
+			</v-card-title>
+			<v-card-subtitle class="text-left">Author:
+				<span :style="{ fontStyle: fStyle }">
+					{{ upperAuthor }}
+				</span>
+			</v-card-subtitle>
+			<v-card-text class="text-left">{{ body }}</v-card-text>
+			<v-card-actions justify="end">
+				<v-btn @click.prevent="switchPublished()">{{ publishedBtnText }}</v-btn>
+			</v-card-actions>
+		</v-card>
+	</v-container>
 </template>
 
 <script>
@@ -25,6 +33,7 @@ export default {
 			default: "",
 		},
 		body: String,
+		image: String,
 		published: {
 			type: Boolean,
 		}
@@ -35,6 +44,12 @@ export default {
 		}
 	},
 	computed: {
+		publishedBtnText() {
+			return this.published ? 'Unpublish' : 'Publish';
+		},
+		cardColor() {
+			return this.published ? 'white' : 'red';
+		},
 		fStyle() {
 			return this.published ? "italic" : "normal";
 		},
@@ -54,15 +69,4 @@ export default {
 }
 </script>
 
-<style scoped>
-.notPublished {
-	background-color: burlywood;
-}
-
-.article {
-	border: 1px solid black;
-	margin-bottom: 15px;
-	text-align: center;
-	padding-bottom: 10px;
-}
-</style>
+<style scoped></style>

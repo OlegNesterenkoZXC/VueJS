@@ -1,14 +1,30 @@
 <template>
-	<div>
-		<form class="form" method="#">
-			<input v-model="article.title" placeholder="Название" type="text">
-			<input v-model="article.author" placeholder="Автор" type="text">
-			<textarea v-model="article.body" placeholder="Текст" type="text"></textarea>
-			<label><input v-model="article.published" type="checkbox" name="" id="">Published</label>
-			<!-- <input v-on:click.prevent="$emit('add-article', article)" type="submit" value="Добавить"> -->
-			<input v-on:click.prevent="addArticle(article)" type="submit" value="Добавить">
-		</form>
-	</div>
+	<v-container>
+		<v-row justify="center">
+			<v-col cols="3">
+				<v-dialog v-model="dialog" width="500">
+					<template v-slot:activator="{ on, attrs }">
+						<v-btn color="blue lighten-2" dark v-bind="attrs" v-on="on">
+							Добавить статью
+						</v-btn>
+					</template>
+					<v-card class="pa-5">
+						<v-form>
+							<v-text-field v-model="article.title" :counter="15" label="Название" required></v-text-field>
+							<v-text-field v-model="article.author" :counter="15" label="Автор" required></v-text-field>
+							<v-textarea v-model="article.body" label="Статья" required> </v-textarea>
+							<v-checkbox v-model="article.published" label="Опубликована" required></v-checkbox>
+							<v-btn @click="addArticle(article)">
+								Добавить
+							</v-btn>
+						</v-form>
+					</v-card>
+				</v-dialog>
+
+			</v-col>
+		</v-row>
+
+	</v-container>
 </template>
 
 <script>

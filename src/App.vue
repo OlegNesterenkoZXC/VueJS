@@ -28,34 +28,16 @@
 						<v-list-item-title>About</v-list-item-title>
 					</v-list-item-content>
 				</v-list-item>
-				<v-list-item link to="/form">
-					<v-list-item-icon>
-						<v-icon>mdi-plus-box</v-icon>
-					</v-list-item-icon>
-					<v-list-item-content>
-						<v-list-item-title>Add your article</v-list-item-title>
-					</v-list-item-content>
-				</v-list-item>
 			</v-list>
 		</v-navigation-drawer>
 		<v-app-bar color="blue" elevation="3" app>
 			<v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 			<v-app-bar-title>VueJS</v-app-bar-title>
+			<v-spacer></v-spacer>
+			<ArticleForm />
 		</v-app-bar>
-		<v-main class="mb-6">
-			<div class="error-button" v-show="isFailed">
-				<p v-show="isCanceled">
-					Загрузка отменена!
-				</p>
-				<p v-show="!isCanceled">
-					Загрузка не удалась...
-				</p>
-				<button @click="fetchArticles">Загрузить</button>
-			</div>
-			<div v-show="isRequested">
-				<img src="loading.gif" alt="Loading...">
-				<button @click="cancelLoading">Отменить</button>
-			</div>
+		<v-main class="mb-12">
+			<MyError v-show="!isSucceeded" />
 			<router-view v-show="isSucceeded" />
 		</v-main>
 		<v-footer padless absolute>
@@ -75,7 +57,9 @@
 <script>
 import { mapState } from 'vuex';
 import store from './store';
+import ArticleForm from './components/ArticleForm.vue';
 import { Types } from './store/types';
+import MyError from './components/MyError.vue';
 
 export default {
 	name: 'App',
@@ -83,6 +67,8 @@ export default {
 		drawer: false,
 	}),
 	components: {
+		ArticleForm,
+		MyError
 	},
 	methods: {
 		fetchArticles() {

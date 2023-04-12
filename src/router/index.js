@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import ArticleList from '../components/ArticleList.vue'
-import ArticleForm from '../components/ArticleForm.vue'
 import MyArticle from '../components/MyArticle.vue'
 import store from '../store'
 
@@ -12,11 +11,6 @@ const routes = [
 		path: '/',
 		name: 'articles',
 		component: ArticleList
-	},
-	{
-		path: '/form',
-		name: 'addArticle',
-		component: ArticleForm
 	},
 	{
 		path: '/article/:id',

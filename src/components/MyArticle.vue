@@ -5,7 +5,7 @@
 			<v-card-title>
 				<router-link :to="articleUrl">{{ title }}</router-link>
 			</v-card-title>
-			<v-card-subtitle class="text-left">Author:
+			<v-card-subtitle class="text-left">Автор:
 				<span :style="{ fontStyle: fStyle }">
 					{{ upperAuthor }}
 				</span>

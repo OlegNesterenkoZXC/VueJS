@@ -1,24 +1,16 @@
-# vuesm
+# Vue 2 приложение по отображению и добавлению статей
 
-## Project setup
+## Загрузка библиотек
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Запуск сервера с приложением
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Запуск JSON сервера со статьями в отдельном терминале
 ```
-npm run build
+json-server --port 10000 --delay 2000 --watch public/articles.json
 ```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
